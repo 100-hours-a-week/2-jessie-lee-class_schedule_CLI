@@ -41,8 +41,10 @@
 - 관리자인지 물어보고, 관리자의 경우 시간표 수정도 가능하도록...
 
 ## 클래스 다이어그램
-TODO : 수정하기!!!
+### 기획단계의 다이어그램
+![classDiagram.jpg](image/classDiagram_draft.jpg)
 
+### 구현 후 다시 작성한 다이어그램
 ![classDiagram.jpg](image/classDiagram.jpg)
 
 ## 예시 출력
