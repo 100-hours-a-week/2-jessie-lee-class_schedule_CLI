@@ -2,10 +2,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Controller {
-    InputView inputView = new InputView();
-    OutputView outputView = new OutputView();
-    List<Parent> parents = new ArrayList<>();
-    Timetable timetable = new Timetable();
+    private InputView inputView = new InputView();
+    private OutputView outputView = new OutputView();
+    private List<Parent> parents = new ArrayList<>();
+    private Timetable timetable = new Timetable();
 
     public Parent parentLogin() {
         String parentName = inputView.getParentName();
