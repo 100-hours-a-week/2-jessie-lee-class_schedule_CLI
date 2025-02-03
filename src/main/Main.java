@@ -29,6 +29,7 @@ public class Main {
                         parent.addChild(childNameTrimmed);
                     }
                 } else {
+                    // TODO : 다시 입력 받기
                     System.out.println("프로그램이 종료됩니다.");
                     break;
                 }
@@ -36,6 +37,23 @@ public class Main {
 
             timetable.printTimetable();
 
+            String childName = inputView.getChildName();
+            Child child = parent.getChildren().stream()
+                    .filter(c -> c.getName().equalsIgnoreCase(childName))
+                    .findFirst()
+                    .orElse(null);
+
+            if (child == null) {
+               String signInChildAnswer = inputView.askIfChildSign();
+                if (signInChildAnswer.equalsIgnoreCase("y")) {
+                    parent.addChild(childName);
+                    child = parent.getChildByName(childName);
+                } else {
+                    // TODO : 다시 입력 받기
+                    System.out.println("프로그램이 종료됩니다.");
+                    break;
+                }
+            }
         }
         inputView.closeScanner();
     }

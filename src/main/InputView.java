@@ -22,6 +22,16 @@ public class InputView {
         return scanner.nextLine().split(",");
     }
 
+    public String getChildName() {
+        System.out.print("시간표를 등록할 자녀의 이름을 입력해주세요: ");
+        return scanner.nextLine().trim();
+    }
+
+    public String askIfChildSign() {
+        System.out.print("자녀가 등록되지 않았습니다. 등록하시겠습니까? (y/n): ");
+        return scanner.nextLine().trim();
+    }
+
     public void closeScanner() {
         scanner.close();
     }

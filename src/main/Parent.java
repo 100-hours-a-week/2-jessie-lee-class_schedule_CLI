@@ -12,4 +12,15 @@ public class Parent extends Member{
     public void addChild(String childName) {
         this.children.add(new Child(childName));
     }
+
+    public List<Child> getChildren() {
+        return children;
+    }
+
+    public Child getChildByName(String childName) {
+        return children.stream()
+                .filter(c -> c.getName().equalsIgnoreCase(childName))
+                .findFirst()
+                .orElse(null);
+    }
 }

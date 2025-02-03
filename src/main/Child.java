@@ -11,4 +11,8 @@ public class Child {
         this.classDay = day;
         this.classTime = time;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }
