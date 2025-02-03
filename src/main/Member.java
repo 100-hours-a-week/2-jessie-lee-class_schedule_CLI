@@ -14,4 +14,8 @@ public class Member {
     public boolean getIsAdmin() {
         return this.isAdmin;
     }
+
+    public String getName() {
+        return this.name;
+    }
 }
