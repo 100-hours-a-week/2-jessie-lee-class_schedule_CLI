@@ -54,6 +54,21 @@ public class Main {
                     break;
                 }
             }
+
+            String[] scheduleInput = inputView.askDayTime();
+
+            Day day = Day.fromKorean(scheduleInput[0]);
+            int time = Integer.parseInt(scheduleInput[1].replace("시", ""));
+
+            if (!timetable.isAvailable(day, time, child.getName())) {
+                System.out.println("해당 시간에는 이미 등록된 학생이 있습니다. 다시 입력해주세요.");
+                // TODO : 다시 입력받기
+                continue;
+            }else {
+                timetable.addSchedule(day, time, child.getName());
+                child.setSchedule(day, time);
+            }
+
         }
         inputView.closeScanner();
     }

@@ -32,6 +32,11 @@ public class InputView {
         return scanner.nextLine().trim();
     }
 
+    public String[] askDayTime() {
+        System.out.print("원하시는 요일과 시간을 올바른 형식으로 입력해주세요 (ex. 월-3시): ");
+        return scanner.nextLine().split("-");
+    }
+
     public void closeScanner() {
         scanner.close();
     }

@@ -1,13 +1,13 @@
 public class Child {
     private String name;
     private Day classDay;
-    private byte classTime;
+    private int classTime;
 
     Child(String name) {
         this.name = name;
     }
 
-    public void addSchedule(Day day, byte time) {
+    public void setSchedule(Day day, int time) {
         this.classDay = day;
         this.classTime = time;
     }
