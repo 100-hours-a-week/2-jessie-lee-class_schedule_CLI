@@ -22,8 +22,17 @@ public class Main {
                 System.out.print("현재 00학원의 회원이 아니십니다. 회원가입 하시겠습니까? (y/n): ");
                 String signinAnswer = scanner.nextLine().trim();
                 if (signinAnswer.equalsIgnoreCase("y")) {
+                    // 학부모 등록
                     parent = new Parent(parentName);
                     parents.add(parent);
+
+                    // 자녀 등록
+                    System.out.print("학부모의 자녀로 등록할 아이(들)의 이름을 적어주세요. (ex. jiye, nix): ");
+                    String[] childNames = scanner.nextLine().split(",");
+                    for (String childName : childNames) {
+                        String childNameTrimmed = childName.trim();
+                        parent.addChild(childNameTrimmed);
+                    }
                 } else {
                     System.out.println("프로그램이 종료됩니다.");
                     endProgram = true;

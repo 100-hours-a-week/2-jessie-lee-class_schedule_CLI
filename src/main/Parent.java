@@ -7,7 +7,7 @@ public class Parent extends Member{
         super(name, false);
     }
 
-    public void addChildren(String name) {
-        this.children.add(new Child(name));
+    public void addChild(String childName) {
+        this.children.add(new Child(childName));
     }
 }
