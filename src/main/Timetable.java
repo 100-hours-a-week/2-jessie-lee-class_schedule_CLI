@@ -1,10 +1,10 @@
 import java.util.HashMap;
 import java.util.Map;
 
-public class TimetableManager {
+public class Timetable {
     private Map<Day, Map<Integer, String>> timetable;
 
-    public TimetableManager() {
+    public Timetable() {
         this.timetable = new HashMap<>();
         for (Day day : Day.values()) {
             this.timetable.put(day, new HashMap<>());

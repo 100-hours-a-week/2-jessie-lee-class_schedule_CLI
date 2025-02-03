@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Parent> parents = new ArrayList<>();
-        TimetableManager manager = new TimetableManager();
+        Timetable timetable = new Timetable();
 
         while(true){
             System.out.print("학부모 성함을 적어주세요: ");
@@ -38,7 +38,7 @@ public class Main {
                 }
             }
 
-            manager.printTimetable();
+            timetable.printTimetable();
 
         }
         scanner.close();
