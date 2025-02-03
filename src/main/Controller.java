@@ -42,22 +42,15 @@ public class Controller {
 
     public Child selectChild(Parent parent) {
         String childName = inputView.getChildName();
-        Child child = parent.getChildren().stream()
-                .filter(c -> c.getName().equalsIgnoreCase(childName))
-                .findFirst()
-                .orElse(null);
+        if(parent.hasChildWithName(childName)) return parent.getChildByName(childName);
 
-        if (child == null) {
-            String signInChildAnswer = inputView.askIfChildSign();
-            if (signInChildAnswer.equalsIgnoreCase("y")) {
-                parent.addChild(childName);
-                child = parent.getChildByName(childName);
-            } else {
-                return selectChild(parent);
-            }
+        String signInChildAnswer = inputView.askIfChildSign();
+        if (signInChildAnswer.equalsIgnoreCase("y")) {
+            parent.addChild(childName);
+        } else {
+            return selectChild(parent);
         }
-
-        return child;
+        return parent.getChildByName(childName);
     }
 
     public void inputSchedule(Child child) {
