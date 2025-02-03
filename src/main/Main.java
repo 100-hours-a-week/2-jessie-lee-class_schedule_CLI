@@ -6,10 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
         List<Parent> parents = new ArrayList<>();
+        TimetableManager manager = new TimetableManager();
 
-        boolean endProgram = false;
-
-        while(!endProgram){
+        while(true){
             System.out.print("학부모 성함을 적어주세요: ");
             String parentName = scanner.nextLine().trim();
             Parent parent = (Parent) parents.stream()
@@ -35,9 +34,12 @@ public class Main {
                     }
                 } else {
                     System.out.println("프로그램이 종료됩니다.");
-                    endProgram = true;
+                    break;
                 }
             }
+
+            manager.printTimetable();
+
         }
         scanner.close();
     }
