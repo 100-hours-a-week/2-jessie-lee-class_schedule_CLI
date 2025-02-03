@@ -37,6 +37,11 @@ public class InputView {
         return scanner.nextLine().split("-");
     }
 
+    public String askEndProgram() {
+        System.out.print("프로그램을 종료하시겠습니까? (y/n): ");
+        return scanner.nextLine().trim();
+    }
+
     public void closeScanner() {
         scanner.close();
     }

@@ -1,76 +1,22 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Main {
     public static void main(String[] args) {
-        InputView inputView = new InputView();
-        OutputView outputView = new OutputView();
-        List<Parent> parents = new ArrayList<>();
-        Timetable timetable = new Timetable();
+        Controller controller = new Controller();
 
         while(true){
-            String parentName = inputView.getParentName();
-            Parent parent = parents.stream()
-                    .filter(p -> p.getName().equalsIgnoreCase(parentName))
-                    .findFirst()
-                    .orElse(null);
+            Parent parent = controller.parentLogin();
 
+            controller.printWelcomeAndSchedule();
 
-            if(parent == null) {
-                String signinAnswer = inputView.askIfSign();
-                if (signinAnswer.equalsIgnoreCase("y")) {
-                    // 학부모 등록
-                    parent = new Parent(parentName);
-                    parents.add(parent);
+            Child child = controller.selectChild(parent);
 
-                    // 자녀 등록
-                    String[] childNames = inputView.getChildrenNames();
-                    for (String childName : childNames) {
-                        String childNameTrimmed = childName.trim();
-                        parent.addChild(childNameTrimmed);
-                    }
-                } else {
-                    // TODO : 다시 입력 받기
-                    System.out.println("프로그램이 종료됩니다.");
-                    break;
-                }
-            }
+            controller.inputSchedule(child);
 
-            timetable.printTimetable();
-
-            String childName = inputView.getChildName();
-            Child child = parent.getChildren().stream()
-                    .filter(c -> c.getName().equalsIgnoreCase(childName))
-                    .findFirst()
-                    .orElse(null);
-
-            if (child == null) {
-               String signInChildAnswer = inputView.askIfChildSign();
-                if (signInChildAnswer.equalsIgnoreCase("y")) {
-                    parent.addChild(childName);
-                    child = parent.getChildByName(childName);
-                } else {
-                    // TODO : 다시 입력 받기
-                    System.out.println("프로그램이 종료됩니다.");
-                    break;
-                }
-            }
-
-            String[] scheduleInput = inputView.askDayTime();
-
-            Day day = Day.fromKorean(scheduleInput[0]);
-            int time = Integer.parseInt(scheduleInput[1].replace("시", ""));
-
-            if (timetable.isAvailable(day, time, child.getName())) {
-                timetable.addSchedule(day, time, child.getName());
-                child.setSchedule(day, time);
-            }else {
-                outputView.scheduleAlreadyFull();
-                // TODO : 다시 입력받기
-                continue;
+            boolean isEnd = controller.askEnd();
+            if(isEnd) {
+                controller.endProgram();
+                break;
             }
 
         }
-        inputView.closeScanner();
     }
 }
