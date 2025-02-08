@@ -1,3 +1,5 @@
+package model;
+
 public class Child {
     private String name;
     private Day classDay;

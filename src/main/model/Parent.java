@@ -1,10 +1,12 @@
+package model;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class Parent extends Member{
     private List<Child> children;
 
-    Parent(String name) {
+    public Parent(String name) {
         super(name, false);
         this.children = new ArrayList<>();
     }

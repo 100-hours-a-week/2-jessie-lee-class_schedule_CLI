@@ -99,8 +99,8 @@
 
 ## 신경 쓴 부분
 ### `Interface` 분리, `controller` 분리 등
-- 기본적인 `Member`, `Parent`, `Child`, `Timetable`이라는 MVC 패턴의 Model과 유사한 클래스 외에 
-인터페이스를 담당하는 `InputView`, `OutputView`를 만들어 SOLID 원칙 중 인터페이스 분리 원칙을 적용해보고자 함
+- 기본적인 `model.Member`, `model.Parent`, `model.Child`, `model.Timetable`이라는 MVC 패턴의 Model과 유사한 클래스 외에 
+인터페이스를 담당하는 `view.InputView`, `view.OutputView`를 만들어 SOLID 원칙 중 인터페이스 분리 원칙을 적용해보고자 함
 - 추가적으로 `controller`를 분리하여, `Main`에 너무 많은 책임이 주어지지 않도록 함
     - 다만 이 과정에서 아쉬운 점은 `controller`가 또 너무 많은 책임을 갖게 된 것 같음..
 

@@ -1,3 +1,10 @@
+import model.Child;
+import model.Day;
+import model.Parent;
+import model.Timetable;
+import view.InputView;
+import view.OutputView;
+
 import java.util.ArrayList;
 import java.util.List;
 

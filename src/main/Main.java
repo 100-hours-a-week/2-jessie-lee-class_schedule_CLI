@@ -1,3 +1,6 @@
+import model.Child;
+import model.Parent;
+
 public class Main {
     public static void main(String[] args) {
         Controller controller = new Controller();
