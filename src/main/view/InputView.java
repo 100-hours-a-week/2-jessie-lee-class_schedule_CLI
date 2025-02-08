@@ -23,12 +23,22 @@ public class InputView {
 
     public String askIfSign() {
         System.out.print("현재 00학원의 회원이 아니십니다. 회원가입 하시겠습니까? (y/n): ");
-        return scanner.nextLine().trim();
+        String input = scanner.nextLine().trim();
+        if(!validator.isYorN(input)){
+            System.out.println("y 또는 n만 입력 가능합니다.");
+            askIfSign();
+        }
+        return input;
     }
 
     public String[] getChildrenNames() {
         System.out.print("학부모의 자녀로 등록할 아이(들)의 이름을 적어주세요. (ex. jiye, nix): ");
-        return scanner.nextLine().split(",");
+        String[] childrenNames = scanner.nextLine().split(",");
+        if(!validator.isChildrenNamesLessThan(childrenNames, 5)){
+            System.out.println("자녀의 이름은 5자 이하만 가능합니다. (ex. lee)");
+            getChildrenNames();
+        }
+        return childrenNames;
     }
 
     public String getChildName() {
@@ -53,7 +63,12 @@ public class InputView {
 
     public String askEndProgram() {
         System.out.print("프로그램을 종료하시겠습니까? (y/n): ");
-        return scanner.nextLine().trim();
+        String input = scanner.nextLine().trim();
+        if(!validator.isYorN(input)){
+            System.out.println("y 또는 n만 입력 가능합니다.");
+            askEndProgram();
+        }
+        return input;
     }
 
     public void closeScanner() {
