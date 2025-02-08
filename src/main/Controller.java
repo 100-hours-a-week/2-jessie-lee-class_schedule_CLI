@@ -29,17 +29,21 @@ public class Controller {
                 parents.add(parent);
 
                 // 자녀 등록
-                String[] childNames = inputView.getChildrenNames();
-                for (String childName : childNames) {
-                    String childNameTrimmed = childName.trim();
-                    parent.addChild(childNameTrimmed);
-                }
+                this.addChildToParent(parent);
             } else {
                 return parentLogin();
             }
         }
 
         return parent;
+    }
+
+    private void addChildToParent(Parent parent) {
+        String[] childNames = inputView.getChildrenNames();
+        for (String childName : childNames) {
+            String childNameTrimmed = childName.trim();
+            parent.addChild(childNameTrimmed);
+        }
     }
 
     public void printWelcomeAndSchedule() {
