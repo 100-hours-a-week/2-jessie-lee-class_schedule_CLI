@@ -4,14 +4,21 @@ import java.util.Scanner;
 
 public class InputView {
     private Scanner scanner;
+    private InputValidation validator;
 
     public InputView() {
         this.scanner = new Scanner(System.in);
+        this.validator = new InputValidation();
     }
 
     public String getParentName() {
-        System.out.print("학부모 성함을 적어주세요: ");
-        return scanner.nextLine().trim();
+        System.out.print("학부모 성함을 적어주세요. (ex. jiye, dan): ");
+        String input = scanner.nextLine().trim();
+        if(!validator.isLessThan(input, 5)) {
+            System.out.println("5자 이하만 가능합니다. (ex. lee)");
+            getParentName();
+        }
+        return input;
     }
 
     public String askIfSign() {
@@ -26,7 +33,12 @@ public class InputView {
 
     public String getChildName() {
         System.out.print("시간표를 등록할 자녀의 이름을 입력해주세요: ");
-        return scanner.nextLine().trim();
+        String input = scanner.nextLine().trim();
+        if(!validator.isLessThan(input, 5)) {
+            System.out.println("5자 이하만 가능합니다. (ex. lee)");
+            getChildName();
+        }
+        return input;
     }
 
     public String askIfChildSign() {
